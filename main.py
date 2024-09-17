@@ -6,15 +6,18 @@ def main():
     num_words = get_num_words(text)
     print(f"{num_words} words found in the document.")
 
+    print("")
+
     # Get the total number of each single chars.
     num_chars = get_count_chars(text)
+    print(f"Number of chars present in the document:\n{num_chars}")
 
 
-def get_count_chars():
+def get_count_chars(text):
     # Create an empty dict.
     chars_dict = {}
     # Iterate each char in the string.
-    for char in string:
+    for char in text:
         # Convert the char in lowercase.
         char = char.lower()
         # Check if char already exists.
@@ -24,6 +27,7 @@ def get_count_chars():
         else:
             # If it does not initialize it to 1.
             chars_dict[char] = 1
+    return chars_dict
 
 
 def get_num_words(text):

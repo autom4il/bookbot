@@ -1,4 +1,5 @@
 def main():
+    print("--- Begin report of books/frankenstein.txt ---")
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
 
@@ -10,7 +11,25 @@ def main():
 
     # Get the total number of each single chars.
     num_chars = get_count_chars(text)
-    print(f"Number of chars present in the document:\n{num_chars}")
+
+    list_of_dict = convert_dict_to_a_list_of_dict(num_chars)
+
+    sorted_list = statistics_about_each_word(list_of_dict)
+
+    for item in sorted_list:
+        print(f"The '{item['key']}' character was found {item['value']} times.")
+
+
+def statistics_about_each_word(list):
+    return sorted(list, key=lambda x: x.get('value'), reverse=True)
+
+
+def convert_dict_to_a_list_of_dict(dict_of_chars):
+    # return [{key: value} for key, value in dict_of_chars.items()]
+    new_list = []
+    for k, v in dict_of_chars.items():
+        new_list.append({'key': k, 'value': v})
+    return new_list
 
 
 def get_count_chars(text):

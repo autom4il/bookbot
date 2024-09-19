@@ -17,7 +17,9 @@ def main():
     sorted_list = statistics_about_each_word(list_of_dict)
 
     for item in sorted_list:
-        print(f"The '{item['key']}' character was found {item['value']} times.")
+        # Check if the key is a character.
+        if item['key'].isalpha() is True:
+            print(f"The '{item['key']}' character was found {item['value']} times.")
 
 
 def statistics_about_each_word(list):
